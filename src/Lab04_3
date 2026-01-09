@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Lab04_3 {
+    public static void main(String[] args) {
+
+        // สร้าง JLabel สำหรับแสดงผลลัพธ์
+        JLabel label2 = new JLabel();
+
+        JFrame f = new JFrame();
+        f.setTitle("Hello Program: Wutthiphat Angsri 68160045 n20");
+        
+        // ในเวอร์ชันนี้มีการคอมเมนต์ FlowLayout ของตัว Frame หลักออก
+        // //f.setLayout(new FlowLayout());
+
+        // สร้าง Panel p1 พร้อมกำหนดสีพื้นหลังแบบ RGB (สีเขียวอ่อน)
+        JPanel p1 = new JPanel();
+        p1.setBackground(new Color(142, 255, 165));
+
+        // สร้าง Panel p2 พร้อมกำหนดสีพื้นหลังเป็นสีชมพู
+        JPanel p2 = new JPanel();
+        p2.setBackground(Color.PINK);
+
+        f.setSize(500, 300);
+
+        JLabel label1 = new JLabel();
+        label1.setText("Enter name: ");
+
+        // เพิ่ม label1 เข้าไปใน Panel p1
+        p1.add(label1);
+
+        JTextField nameBox = new JTextField(5);
+        // เพิ่มช่องกรอกชื่อเข้าไปใน Panel p1
+        p1.add(nameBox);
+
+        JButton b1 = new JButton();
+        b1.setText("send");
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameBox.getText();
+                label2.setText("Hello " + name);
+            }
+        });
+
+        // เพิ่มปุ่มเข้าไปใน Panel p1
+        p1.add(b1);
+        
+        // เพิ่ม label2 (ส่วนแสดงผล) เข้าไปใน Panel p2
+        p2.add(label2);
+
+        // นำ Panel ทั้งสองไปใส่ใน Frame หลัก
+        // โดยปกติ BorderLayout จะวาง p1 ไว้ตรงกลาง และ p2 ไว้ด้านล่าง (ตามลักษณะในภาพ)
+        f.add(p1, BorderLayout.CENTER);
+        f.add(p2, BorderLayout.SOUTH);
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+    }
+}
