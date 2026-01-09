@@ -1,0 +1,56 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Lab04_4v2 {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Grading Program: Wutthiphat Angsri 68160045 n20"); //
+        f.setSize(500, 300); //
+        f.setLayout(new FlowLayout()); //
+
+        JTextField midBox = new JTextField(5); //
+        JTextField finBox = new JTextField(5); //
+        JTextField hwBox = new JTextField(5); //
+        JButton b1 = new JButton("Grade"); //
+        JLabel label1 = new JLabel(); //
+
+        b1.addActionListener(new ActionListener() { //
+            @Override
+            public void actionPerformed(ActionEvent e) { //
+                try {
+                    String StrMid = midBox.getText(); //
+                    String StrFin = finBox.getText(); //
+                    String StrHw = hwBox.getText(); //
+
+                    double mid = Double.parseDouble(StrMid); //
+                    double fin = Double.parseDouble(StrFin); //
+                    double hw = Double.parseDouble(StrHw); //
+
+                    double total = mid + fin + hw; //
+                    char grade; //
+
+                    if (total >= 80) grade = 'A'; //
+                    else if (total >= 70) grade = 'B'; //
+                    else if (total >= 60) grade = 'C'; //
+                    else if (total >= 50) grade = 'D'; //
+                    else grade = 'F'; //
+
+                    label1.setText("" + grade); //
+                } catch (NumberFormatException ex) {
+                    label1.setText("Error: Invalid Input");
+                }
+            }
+        });
+
+        // เพิ่มคอมโพเนนต์เข้าหน้าจอ (เรียงตาม UI ในภาพ)
+        f.add(midBox); //
+        f.add(finBox); //
+        f.add(hwBox); //
+        f.add(b1); //
+        f.add(label1); //
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true); //
+    }
+}
